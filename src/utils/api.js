@@ -51,3 +51,18 @@ export const getLocationSuggestions = async (query) => {
     throw error;
   }
 };
+
+export const getAlerts = async () => {
+  try {
+    const response = await fetch('http://localhost:4000/alerts');
+    console.log({response});
+    if (!response.ok) {
+      throw new Error('Failed to fetch alerts');
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching alerts:', error);
+    throw error;
+  }
+};

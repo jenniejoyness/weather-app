@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay/WeatherDisplay';
+import AlertsDisplay from './components/AlertsDisplay/AlertsDisplay';
 import { getWeatherData } from './utils/api';
 import './App.css';
 
@@ -48,6 +49,8 @@ function App() {
         
         {weatherData && <WeatherDisplay weatherData={weatherData} />}
       </div>
+      
+      <AlertsDisplay />
       
       <footer className="mt-12 text-white text-opacity-80 text-sm text-center">
         <p> {new Date().getFullYear()} Weather App. Data provided by WeatherAPI.com</p>
