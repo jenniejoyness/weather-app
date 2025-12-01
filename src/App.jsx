@@ -52,7 +52,7 @@ function App() {
             {/*    </div>*/}
             {/*  )}*/}
               
-             <WeatherDisplay weatherData={weatherData} />
+             <WeatherDisplay />
             {/*</div>*/}
           </div>
         );
@@ -67,36 +67,20 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 to-blue-600">
-      {/* Top Navigation */}
-      <div className="flex space-evenly items-center p-6 gap-2.5">
+      <div>
         <div style={{ display: "flex", gap: '100px', justifyContent: 'space-evenly' }} className="flex justify-center">
           <button
             onClick={() => setCurrentView('weather')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-              currentView === 'weather'
-                ? 'bg-white text-blue-600 shadow-xl transform scale-105'
-                : 'text-white hover:bg-white hover:bg-opacity-20 hover:scale-102'
-            }`}
           >
             Weather
           </button>
           <button
             onClick={() => setCurrentView('alerts')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-              currentView === 'alerts'
-                ? 'bg-white text-blue-600 shadow-xl transform scale-105'
-                : 'text-white hover:bg-white hover:bg-opacity-20 hover:scale-102'
-            }`}
           >
             Alerts
           </button>
           <button
             onClick={() => setCurrentView('predictions')}
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-              currentView === 'predictions'
-                ? 'bg-white text-blue-600 shadow-xl transform scale-105'
-                : 'text-white hover:bg-white hover:bg-opacity-20 hover:scale-102'
-            }`}
           >
             Predictions
           </button>
@@ -104,7 +88,7 @@ function App() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1">
+      <div>
         {renderContent()}
       </div>
 

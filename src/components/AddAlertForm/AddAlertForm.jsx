@@ -7,7 +7,7 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
     locationName: '',
     coordinates: '',
     parameter: 'temperature',
-    operator: 'equals to',
+    operator: '==',
     value: ''
   });
   const [loading, setLoading] = useState(false);
@@ -15,13 +15,25 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
 
   const parameterOptions = [
     { value: 'temperature', label: 'Temperature' },
-    { value: 'rain', label: 'Rain' }
+    { value: 'rain', label: 'Rain' },
+    { value: 'windSpeed', label: 'Wind Speed' },
+    { value: 'humidity', label: 'Humidity' },
+    { value: 'cloudCover', label: 'Cloud Cover' },
+    { value: 'windDirection', label: 'Wind Direction' },
+    { value: 'snowAccumulation', label: 'Snow Accumulation' },
+    { value: 'cloudCeiling', label: 'Cloud Ceiling' }
   ];
 
   const operatorOptions = [
-    { value: 'equals to', label: 'Equals to' },
-    { value: 'bigger than', label: 'Bigger than' },
-    { value: 'smaller then', label: 'Smaller then' }
+    { value: '==', label: 'Equal To', displayLabel: 'Equal To' },
+    { value: '>', label: 'Greater Than', displayLabel: 'Greater Than' },
+    { value: '<', label: 'Less Than', displayLabel: 'Less Than' },
+    { value: '>=', label: 'Greater Than or Equal To', displayLabel: 'Greater Than or Equal To' },
+    { value: '<=', label: 'Less Than or Equal To', displayLabel: 'Less Than or Equal To' },
+    // { value: 'AND', label: 'Logical AND', displayLabel: 'Logical AND' },
+    // { value: 'OR', label: 'Logical OR', displayLabel: 'Logical OR' },
+    // { value: 'IS NULL', label: 'Is Null', displayLabel: 'Is Null (no value)' },
+    // { value: '!', label: 'NOT (Negation)', displayLabel: 'NOT (Negation)' }
   ];
 
   const handleInputChange = (e) => {
@@ -140,6 +152,9 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
 
             <div className="space-y-3">
               <h3 className="text-lg font-medium text-gray-800">Rule Configuration</h3>
+              <p className="text-sm text-gray-600">
+                Configure when this alert should trigger based on weather conditions.
+              </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div>
@@ -174,7 +189,7 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
                   >
                     {operatorOptions.map(option => (
                       <option key={option.value} value={option.value}>
-                        {option.label}
+                        {option.displayLabel}
                       </option>
                     ))}
                   </select>

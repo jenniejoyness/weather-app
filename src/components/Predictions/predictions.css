@@ -1,0 +1,30 @@
+.main-container {
+
+}
+
+.prediction-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /*border-style: solid;*/
+    /*border: 1px solid black;*/
+}
+.prediction-container{
+    display: flex;
+    flex-direction: row;
+    /*border: 1px solid black;*/
+}
+.three-day-forecast-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.day-container {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: black;
+    padding: 1rem;
+}

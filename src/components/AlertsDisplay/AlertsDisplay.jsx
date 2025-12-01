@@ -11,7 +11,7 @@ const AlertsDisplay = () => {
 
   useEffect(() => {
     const fetchAlerts = async () => {
-      try {
+        try {
         setLoading(true);
         setError(null);
         const alertsData = await getAlerts();
@@ -42,33 +42,33 @@ const AlertsDisplay = () => {
     fetchAlerts();
   };
 
-  if (loading) {
-    return (
-      <div className="w-full max-w-4xl mx-auto p-4">
-        <h2 className="text-2xl font-bold text-white mb-6">Weather Alerts</h2>
-        <div className="flex justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="w-full max-w-4xl mx-auto p-4">
-        <h2 className="text-2xl font-bold text-white mb-6">Weather Alerts</h2>
-        <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-          {error}
-        </div>
-      </div>
-    );
-  }
-
+  // if (loading) {
+  //   return (
+  //     <div className="w-full max-w-4xl mx-auto p-4">
+  //       <h2 className="text-2xl font-bold text-white mb-6">Weather Alerts</h2>
+  //       <div className="flex justify-center">
+  //         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+  //   console.log('after loading:');
+  // if (error) {
+  //     console.log(' error:', error);
+  //   return (
+  //     <div className="w-full max-w-4xl mx-auto p-4">
+  //       <h2 className="text-2xl font-bold text-white mb-6">Weather Alerts</h2>
+  //       <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+  //         {error}
+  //       </div>
+  //     </div>
+  //   );
+  // }
   console.log({alerts});
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-white">Weather Alerts</h2>
+      <div >
+        <h2>Weather Alerts</h2>
         <button
           onClick={() => setShowAddForm(true)}
           className="px-4 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 transition-colors"
@@ -76,8 +76,7 @@ const AlertsDisplay = () => {
           Add New Alert
         </button>
       </div>
-
-      {alerts.length === 0 ? (
+        {!showAddForm ? alerts.length === 0 ? (
         <div className="text-center p-8 bg-white bg-opacity-20 rounded-lg">
           <p className="text-white text-lg">No alerts at this time</p>
         </div>
@@ -87,7 +86,8 @@ const AlertsDisplay = () => {
             <AlertCard key={alert.rules?.rule_id || index} alert={alert} />
           ))}
         </div>
-      )}
+      ): null }
+
 
       {showAddForm && (
         <AddAlertForm
