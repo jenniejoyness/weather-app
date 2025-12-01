@@ -1,63 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay/WeatherDisplay';
 import AlertsDisplay from './components/AlertsDisplay/AlertsDisplay';
 import Predictions from './components/Predictions/Predictions';
-import { getWeatherData } from './utils/api';
+import ToastContainer from './components/ToastContainer/ToastContainer';
+import { useAlertNotifications } from './hooks/useWebSocket';
 import './App.css';
 
 function App() {
-  const [weatherData, setWeatherData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [currentView, setCurrentView] = useState('weather');
+  const alertsDisplayRef = useRef(null);
 
-  const handleSearch = async (location) => {
-    setLoading(true);
-    setError(null);
+  // Handle alert notifications
+  const { notifications, removeNotification } = useAlertNotifications((notification) => {
+    console.log('New alert notification received:', notification);
     
-    try {
-      const data = await getWeatherData(location);
-      setWeatherData(data);
-    } catch (err) {
-      setError('Failed to fetch weather data. Please try again.');
-      console.error(err);
-    } finally {
-      setLoading(false);
+    // If we're on the alerts page, trigger a refresh
+    if (currentView === 'alerts' && alertsDisplayRef.current?.refreshAlerts) {
+      alertsDisplayRef.current.refreshAlerts();
     }
-  };
+  });
 
   const renderContent = () => {
     switch (currentView) {
       case 'weather':
         return (
           <div className="flex flex-col items-center justify-center p-4">
-            {/*<div className="text-center mb-8">*/}
-            {/*  <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">Weather App</h1>*/}
-            {/*  <p className="text-white text-opacity-90">Enter a location to check the current weather</p>*/}
-            {/*</div>*/}
-            
-            {/*<div className="w-full max-w-2xl px-4">*/}
-            {/*  <SearchBar onSearch={handleSearch} isLoading={loading} />*/}
-            {/*  */}
-            {/*  {error && (*/}
-            {/*    <div className="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">*/}
-            {/*      {error}*/}
-            {/*    </div>*/}
-            {/*  )}*/}
-            {/*  */}
-            {/*  {loading && !weatherData && (*/}
-            {/*    <div className="mt-8 flex justify-center">*/}
-            {/*      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>*/}
-            {/*    </div>*/}
-            {/*  )}*/}
-              
              <WeatherDisplay />
-            {/*</div>*/}
           </div>
         );
       case 'alerts':
-        return <AlertsDisplay />;
+        return <AlertsDisplay ref={alertsDisplayRef} />;
       case 'predictions':
         return <Predictions />;
       default:
@@ -92,6 +65,11 @@ function App() {
         {renderContent()}
       </div>
 
+      {/* Toast Notifications */}
+      <ToastContainer 
+        notifications={notifications} 
+        onRemoveNotification={removeNotification} 
+      />
     </div>
   );
 }

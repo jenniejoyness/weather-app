@@ -1,0 +1,61 @@
+.toast-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.toast-wrapper {
+  pointer-events: auto;
+  position: relative;
+}
+
+.toast-wrapper .toast-notification {
+  position: relative;
+  top: calc(20px + (var(--toast-index) * 80px));
+  margin-bottom: 10px;
+}
+
+/* Ensure proper stacking */
+.toast-wrapper:nth-child(1) .toast-notification {
+  top: 20px;
+}
+
+.toast-wrapper:nth-child(2) .toast-notification {
+  top: 100px;
+}
+
+.toast-wrapper:nth-child(3) .toast-notification {
+  top: 180px;
+}
+
+.toast-wrapper:nth-child(4) .toast-notification {
+  top: 260px;
+}
+
+.toast-wrapper:nth-child(n+5) .toast-notification {
+  top: 340px;
+}
+
+@media (max-width: 768px) {
+  .toast-wrapper:nth-child(1) .toast-notification {
+    top: 10px;
+  }
+  
+  .toast-wrapper:nth-child(2) .toast-notification {
+    top: 90px;
+  }
+  
+  .toast-wrapper:nth-child(3) .toast-notification {
+    top: 170px;
+  }
+  
+  .toast-wrapper:nth-child(4) .toast-notification {
+    top: 250px;
+  }
+  
+  .toast-wrapper:nth-child(n+5) .toast-notification {
+    top: 330px;
+  }
+}
