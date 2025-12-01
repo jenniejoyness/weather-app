@@ -14,15 +14,38 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
   const [error, setError] = useState(null);
 
   const parameterOptions = [
-    { value: 'temperature', label: 'Temperature' },
-    { value: 'rain', label: 'Rain' },
-    { value: 'windSpeed', label: 'Wind Speed' },
-    { value: 'humidity', label: 'Humidity' },
-    { value: 'cloudCover', label: 'Cloud Cover' },
-    { value: 'windDirection', label: 'Wind Direction' },
-    { value: 'snowAccumulation', label: 'Snow Accumulation' },
-    { value: 'cloudCeiling', label: 'Cloud Ceiling' }
-  ];
+  { value: 'altimeterSetting', label: 'Altimeter Setting' },
+  { value: 'cloudBase', label: 'Cloud Base' },
+  { value: 'cloudCeiling', label: 'Cloud Ceiling' },
+  { value: 'cloudCover', label: 'Cloud Cover' },
+  { value: 'dewPoint', label: 'Dew Point' },
+  { value: 'evapotranspiration', label: 'Evapotranspiration' },
+  { value: 'freezingRainIntensity', label: 'Freezing Rain Intensity' },
+  { value: 'humidity', label: 'Humidity' },
+  { value: 'iceAccumulation', label: 'Ice Accumulation' },
+  { value: 'iceAccumulationLwe', label: 'Ice Accumulation LWE' },
+  { value: 'precipitationProbability', label: 'Precipitation Probability' },
+  { value: 'pressureSeaLevel', label: 'Pressure Sea Level' },
+  { value: 'pressureSurfaceLevel', label: 'Pressure Surface Level' },
+  { value: 'rainAccumulation', label: 'Rain Accumulation' },
+  { value: 'rainIntensity', label: 'Rain Intensity' },
+  { value: 'sleetAccumulation', label: 'Sleet Accumulation' },
+  { value: 'sleetAccumulationLwe', label: 'Sleet Accumulation LWE' },
+  { value: 'sleetIntensity', label: 'Sleet Intensity' },
+  { value: 'snowAccumulation', label: 'Snow Accumulation' },
+  { value: 'snowAccumulationLwe', label: 'Snow Accumulation LWE' },
+  { value: 'snowDepth', label: 'Snow Depth' },
+  { value: 'snowIntensity', label: 'Snow Intensity' },
+  { value: 'temperature', label: 'Temperature' },
+  { value: 'temperatureApparent', label: 'Apparent Temperature' },
+  { value: 'uvHealthConcern', label: 'UV Health Concern' },
+  { value: 'uvIndex', label: 'UV Index' },
+  { value: 'visibility', label: 'Visibility' },
+  { value: 'weatherCode', label: 'Weather Code' },
+  { value: 'windDirection', label: 'Wind Direction' },
+  { value: 'windGust', label: 'Wind Gust' },
+  { value: 'windSpeed', label: 'Wind Speed' }
+];
 
   const operatorOptions = [
     { value: '==', label: 'Equal To', displayLabel: 'Equal To' },
