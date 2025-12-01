@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AlertCard from '../AlertCard/AlertCard';
 import AddAlertForm from '../AddAlertForm/AddAlertForm';
 import { getAlerts } from '../../utils/api';
+import './AlertsDisplay.css';
 
 const AlertsDisplay = () => {
   const [alerts, setAlerts] = useState([]);
@@ -81,7 +82,7 @@ const AlertsDisplay = () => {
           <p className="text-white text-lg">No alerts at this time</p>
         </div>
       ) : (
-        <div className="flex flex-col space-y-4">
+        <div className="alerts-container">
           {alerts.map((alert, index) => (
             <AlertCard key={alert.rules?.rule_id || index} alert={alert} />
           ))}
