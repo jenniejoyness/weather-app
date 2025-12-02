@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createAlert } from '../../utils/api';
+import './AddAlertForm.css';
 
 const AddAlertForm = ({ onClose, onAlertCreated }) => {
   const [formData, setFormData] = useState({
@@ -105,19 +106,8 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-800">Add New Alert</h2>
-            <button
-              onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
-            >
-              ×
-            </button>
-          </div>
-
+    <div className="form">
+         <h2 className="text-2xl font-bold text-gray-800">Add New Alert</h2>
           {error && (
             <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
               {error}
@@ -136,7 +126,7 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input"
                 placeholder="Enter alert name"
               />
             </div>
@@ -254,8 +244,6 @@ const AddAlertForm = ({ onClose, onAlertCreated }) => {
               </button>
             </div>
           </form>
-        </div>
-      </div>
     </div>
   );
 };

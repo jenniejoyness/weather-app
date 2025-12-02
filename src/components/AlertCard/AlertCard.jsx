@@ -6,12 +6,9 @@ const AlertCard = ({ alert }) => {
   
   return (
     <div className="alert-container">
-        <h3>{name}</h3>
-      <div className="flex flex-col space-y-2">
-          <span>{locationName}</span>
-           <span>{`Trigger: ${rules}`}</span>
-           <span className="font-medium text-gray-800"> {triggered ? 'Triggered' : 'Has not been triggered'}</span>
-      </div>
+        <h3 className={"alert-detail"}>{name} - {locationName}</h3>
+        <div className={"alert-detail"}>{`Condition: ${rules}`} </div>
+        <div className="trigger-display"> {triggered ? 'Has been triggered' : 'Has not been triggered'}</div>
     </div>
   );
 };

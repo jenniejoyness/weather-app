@@ -43,28 +43,6 @@ const AlertsDisplay = () => {
     fetchAlerts();
   };
 
-  // if (loading) {
-  //   return (
-  //     <div className="w-full max-w-4xl mx-auto p-4">
-  //       <h2 className="text-2xl font-bold text-white mb-6">Weather Alerts</h2>
-  //       <div className="flex justify-center">
-  //         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-  //   console.log('after loading:');
-  // if (error) {
-  //     console.log(' error:', error);
-  //   return (
-  //     <div className="w-full max-w-4xl mx-auto p-4">
-  //       <h2 className="text-2xl font-bold text-white mb-6">Weather Alerts</h2>
-  //       <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-  //         {error}
-  //       </div>
-  //     </div>
-  //   );
-  // }
   console.log({alerts});
   return (
     <div className="w-full max-w-4xl mx-auto p-4">

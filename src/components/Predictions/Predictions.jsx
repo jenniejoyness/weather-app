@@ -10,58 +10,58 @@ const Predictions = () => {
           try {
             setLoading(true);
             setError(null);
-            const response = {
-            "success": true,
-            "predictions": [
-                {
-                    "alert_id": 1,
-                    "alert_name": "test1",
-                    "fields_used": "temperature",
-                    "prediction": {
-                        "data": {
-                            "timelines": [
-                                {
-                                    "timestep": "1d",
-                                    "endTime": "2025-12-03T04:00:00Z",
-                                    "startTime": "2025-11-30T04:00:00Z",
-                                    "intervals": [
-                                        {
-                                            "startTime": "2025-11-30T04:00:00Z",
-                                            "values": {
-                                                "temperature": 20.7
-                                            }
-                                        },
-                                        {
-                                            "startTime": "2025-12-01T04:00:00Z",
-                                            "values": {
-                                                "temperature": 20.4
-                                            }
-                                        },
-                                        {
-                                            "startTime": "2025-12-02T04:00:00Z",
-                                            "values": {
-                                                "temperature": 20.9
-                                            }
-                                        },
-                                        {
-                                            "startTime": "2025-12-03T04:00:00Z",
-                                            "values": {
-                                                "temperature": 20.8
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
+        //     const response = {
+        //     "success": true,
+        //     "predictions": [
+        //         {
+        //             "alert_id": 1,
+        //             "alert_name": "test1",
+        //             "fields_used": "temperature",
+        //             "prediction": {
+        //                 "data": {
+        //                     "timelines": [
+        //                         {
+        //                             "timestep": "1d",
+        //                             "endTime": "2025-12-03T04:00:00Z",
+        //                             "startTime": "2025-11-30T04:00:00Z",
+        //                             "intervals": [
+        //                                 {
+        //                                     "startTime": "2025-11-30T04:00:00Z",
+        //                                     "values": {
+        //                                         "temperature": 20.7
+        //                                     }
+        //                                 },
+        //                                 {
+        //                                     "startTime": "2025-12-01T04:00:00Z",
+        //                                     "values": {
+        //                                         "temperature": 20.4
+        //                                     }
+        //                                 },
+        //                                 {
+        //                                     "startTime": "2025-12-02T04:00:00Z",
+        //                                     "values": {
+        //                                         "temperature": 20.9
+        //                                     }
+        //                                 },
+        //                                 {
+        //                                     "startTime": "2025-12-03T04:00:00Z",
+        //                                     "values": {
+        //                                         "temperature": 20.8
+        //                                     }
+        //                                 }
+        //                             ]
+        //                         }
+        //                     ]
+        //                 }
+        //             }
+        //         }
+        //     ]
+        // }
             //todo -uncomment
-            // const response = await fetch('http://localhost:4000/predictions');
-            if (!response.ok) {
-              return <div>Failed to display predictions at this time...</div>
-            }
+            const response = await fetch('http://localhost:4000/predictions');
+            // if (!response.ok) {
+            //   return <div>Failed to display predictions at this time...</div>
+            // }
             console.log('predictions response:', response);
              const predictionsData = await response.json();
              console.log('predictionsData:', predictionsData);
@@ -110,16 +110,16 @@ const Predictions = () => {
           {data.map((item, index) => (
                <div className="prediction-wrapper">
                     <h2>{`${item.alert_name} - ${item.location_name}`}</h2>
+                     <span className="condition">Condition: {item.rules}</span>
                     <div className="prediction-container">
-                        <span> {item.rules}</span>
                        <div className="three-day-forecast-container">
                        {item.prediction.data.timelines[0].intervals.map((day, index) => (
                            <div className="day-container">
-                               <div>{new Date(day.startTime).toLocaleDateString()}</div>
+                               <div className="date">{new Date(day.startTime).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
                                {Object.entries(day.values).map(([key, value]) => (
                                    <div>{`${key}: ${value}`}</div>
                                ))}
-                               <div>{`The alert is predicted to ${item.willBeTriggered ? 'be triggered' : 'not be triggered'}`}</div>
+                               <div>The alert is predicted to {day.willBeTriggered ? <span className="triggered">be triggered</span> : <span className="notTriggered">not be triggered</span>}</div>
                            </div>
                        ))}
                    </div>

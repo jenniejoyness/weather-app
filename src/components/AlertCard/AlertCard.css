@@ -4,6 +4,25 @@
     justify-content: center;
     align-items: center;
     /*padding: 10px*/
+}
 
 
+.alert-detail {
+      display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+}
+
+.trigger-display {
+    margin-top: 10px;
+    font-weight: bold;
+    background-color: #acb4cf;
+    padding: 15px;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }

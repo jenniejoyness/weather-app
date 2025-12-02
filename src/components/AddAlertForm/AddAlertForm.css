@@ -1,0 +1,36 @@
+.form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 90vw;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.form h2,
+.form h3,
+.form label,
+.form p,
+.form input,
+.form select,
+.form button {
+    text-align: left;
+}
+
+.form form {
+    text-align: left;
+}
+
+. input {
+    border-radius: 8px;
+    border-color: #e9ecef;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
