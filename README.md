@@ -39,37 +39,6 @@ npm run dev
 
 The application in dev mode will be available at `http://localhost:3000`
 
-### Production Build
-
-Create an optimized production build:
-
-```bash
-npm run build
-```
-
-The build files will be generated in the `dist` directory.
-
-### Preview Production Build
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-The application in production mode will be available at `http://localhost:4173`
-
-## WebSocket Configuration
-
-The application connects to a WebSocket server at `ws://localhost:4000` for real-time alert notifications. Ensure your WebSocket server is running on this port to receive live weather alerts.
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint to check code quality
-
 ## Project Structure
 
 ```
